@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Poppins:wght@400;500;700&family=Roboto&display=swap"
+    rel="stylesheet">
+  <title>Escolha um Nível</title>
+  <style>
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0;
+        flex-direction: column;
+    }
+
+    h1 {
+        display: inline-block;
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: space-around;
+        width: 90%;
+        max-height: 90vh;
+        background-color: #00bf63;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 48%;
+        margin: 0 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza verticalmente */
+    }
+
+    .card img {
+        width: 35%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 10px; /* Espaçamento inferior */
+    }
+
+    .card-title {
+        color: #161A49;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    p {
+        width: 100%;
+        text-align: unset;
+    }
+
+    .card:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    #inter{
+      margin-top: 33px;
+    }
+    #avan{
+      margin-top: 8px;
+    }
+</style>
+</head>
+
+<body>
+  <center><h1>Escolha um nível</h1></center>
+  <div class="cards-container">
+    <div class="card">
+      <img src="./iniciante.png" alt="Iniciante">
+      <div class="card-title">Iniciante</div>
+      <p>Aquelas que estão começandoa a aprender programação e têm pouco ou nenhum conhecimento prévio. Eles estão
+        aprendendo os conceitos básicos e as fundamentações da programação</p>
+    </div>
+    <div class="card">
+      <img src="junior.png" alt="Júnior">
+      <div class="card-title">Júnior</div>
+      <p>O nível de um programador júnior é geralmente com menos experiência
+        prática do que os programadores intermediários e avançados</p>
+    </div>
+    <div class="card">
+      <img src="./intermediario.png" alt="Intermediário" id="inter">
+      <div class="card-title">Intermediário</div>
+      <p>Programadores intermediários compreendem bem os conceitos fundamentais, criam soluções complexos e trabalham de
+        forma autônoma em projetos, domininando uma ou mais linguagens de programação
+      </p>
+    </div>
+    <div class="card">
+      <img src="./avançado.png" alt="Avançado" id="avan">
+      <div class="card-title">Avançado</div>
+      <p>Programadores avançados dominam linguagens e frameworks, resolvem problmeas complexos e otimizam o código.
+        Lideram equipes,
+        contribuem em arquiteturas de software e tem habilidades sofisticadas de resolução de problemas
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
