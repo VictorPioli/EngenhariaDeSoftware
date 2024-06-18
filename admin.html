@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #logout {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #logout:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bem-vindo à página de administração!</h1>
+    <p>Você está logado como administrador.</p>
+
+    <h2>Respostas dos Desafios Iniciais:</h2>
+    <table id="inicianteTable">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Desafio 1</th>
+                <th>Desafio 2</th>
+                <th>Desafio 3</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <h2>Respostas dos Desafios Intermediários:</h2>
+    <table id="interTable">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Desafio 1</th>
+                <th>Desafio 2</th>
+                <th>Desafio 3</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <h2>Respostas dos Desafios Avançados:</h2>
+    <table id="advancedTable">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Desafio 1</th>
+                <th>Desafio 2</th>
+                <th>Desafio 3</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <a href="#" id="logout">Logout</a>
+
+    <script>
+        // Carregar respostas dos desafios
+        $(document).ready(function () {
+            $.ajax({
+                url: '/respostas',
+                type: 'GET',
+                success: function (response) {
+                    const inicianteTableBody = $('#inicianteTable tbody');
+                    const interTableBody = $('#interTable tbody');
+                    const advancedTableBody = $('#advancedTable tbody');
+
+                    response.forEach(function (user) {
+                        if (!user.role && (user.iniciante1 || user.iniciante2 || user.iniciante3 || user.inter1 || user.inter2 || user.inter3 || user.advanced1 || user.advanced2 || user.advanced3)) {
+                            // Respostas Iniciais
+                            if (user.iniciante1 || user.iniciante2 || user.iniciante3) {
+                                const inicianteRow = $('<tr></tr>');
+                                inicianteRow.append('<td>' + user.email + '</td>');
+                                inicianteRow.append('<td>' + (user.iniciante1 || '') + '</td>');
+                                inicianteRow.append('<td>' + (user.iniciante2 || '') + '</td>');
+                                inicianteRow.append('<td>' + (user.iniciante3 || '') + '</td>');
+                                inicianteTableBody.append(inicianteRow);
+                            }
+
+                            // Respostas Intermediárias
+                            if (user.inter1 || user.inter2 || user.inter3) {
+                                const interRow = $('<tr></tr>');
+                                interRow.append('<td>' + user.email + '</td>');
+                                interRow.append('<td>' + (user.inter1 || '') + '</td>');
+                                interRow.append('<td>' + (user.inter2 || '') + '</td>');
+                                interRow.append('<td>' + (user.inter3 || '') + '</td>');
+                                interTableBody.append(interRow);
+                            }
+
+                            // Respostas Avançadas
+                            if (user.advanced1 || user.advanced2 || user.advanced3) {
+                                const advancedRow = $('<tr></tr>');
+                                advancedRow.append('<td>' + user.email + '</td>');
+                                advancedRow.append('<td>' + (user.advanced1 || '') + '</td>');
+                                advancedRow.append('<td>' + (user.advanced2 || '') + '</td>');
+                                advancedRow.append('<td>' + (user.advanced3 || '') + '</td>');
+                                advancedTableBody.append(advancedRow);
+                            }
+                        }
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error('Erro ao carregar respostas dos desafios: ' + textStatus, errorThrown);
+                }
+            });
+
+            // Logout
+            $('#logout').click(function (e) {
+                e.preventDefault();
+                // Realizar logout (aqui pode adicionar a lógica necessária)
+                alert('Logout realizado com sucesso.');
+                window.location.href = '/';
+            });
+        });
+    </script>
+</body>
+
+</html>
