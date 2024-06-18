@@ -1,4 +1,0 @@
-O arquivo txt é para testar se o BackEnd está recebendo a resposta em JSON enviada pelo Insomnia.
-O próximo passo é a integração do BackEnd com o FrontEnd, onde este arquivo txt não será necessário
-O BackEnd possui método posts para login, registro e envio de respostas, cada um com sua API. E método GET que retorna os 
-dados do usuário.
